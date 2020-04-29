@@ -16,11 +16,11 @@ type Errorer interface {
 	error() error
 }
 
-type GetNameResponse struct {
-	Response []string
+type GetJokeResponse struct {
+	Response string
 }
 
-func MakeGetNameResponseEncoder(appCtx appcontext.Context) (kithttp.EncodeResponseFunc, error) {
+func MakeGetJokeResponseEncoder(appCtx appcontext.Context) (kithttp.EncodeResponseFunc, error) {
 	return func(ctx context.Context, httpResponse http.ResponseWriter, endpointResponse interface{}) error {
 		response, err := json.Marshal(endpointResponse)
 		if err != nil {

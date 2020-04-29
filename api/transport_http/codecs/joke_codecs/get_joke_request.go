@@ -7,13 +7,13 @@ import (
 	"net/http"
 )
 
-type GetNameRequest struct {
+type GetJokeRequest struct {
 }
 
 //Decode the Push notification Req.
-func MakeGetNameRequestDecoder(appCtx appcontext.Context) (kithttp.DecodeRequestFunc, error) {
+func MakeGetJokeRequestDecoder(appCtx appcontext.Context) (kithttp.DecodeRequestFunc, error) {
 	return func(ctx context.Context, r *http.Request) (interface{}, error) {
-		var Req GetNameRequest
+		var Req GetJokeRequest
 		//err := decode.Decode(&Req)
 		//if err != nil {
 		//	return nil, errors.New("inconsistent mapping between route and handler")
