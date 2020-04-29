@@ -2,16 +2,19 @@ package services
 
 import (
 	"github.com/bmsandoval/apple-coding-challenge/library/appcontext"
+	"github.com/bmsandoval/apple-coding-challenge/services/jokes"
 	"github.com/bmsandoval/apple-coding-challenge/services/names"
 	"reflect"
 )
 
 type Bundle struct {
 	NamesSvc names.Service
+	JokesSvc jokes.Service
 }
 
 var bundlables = []bundlable{
 	names.Helpable{},
+	jokes.Helpable{},
 }
 
 type bundlable interface {

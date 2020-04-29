@@ -33,11 +33,12 @@ func (m *Mock_names) EXPECT() *Mock_namesMockRecorder {
 }
 
 // Get mocks base method
-func (m *Mock_names) Get() error {
+func (m *Mock_names) Get() (*string, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Get")
-	ret0, _ := ret[0].(error)
-	return ret0
+	ret0, _ := ret[0].(*string)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
 }
 
 // Get indicates an expected call of Get

@@ -3,9 +3,9 @@ package joke_codecs
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	kithttp "github.com/go-kit/kit/transport/http"
 	"github.com/bmsandoval/apple-coding-challenge/library/appcontext"
-	"log"
 	"net/http"
 )
 
@@ -16,17 +16,15 @@ type Errorer interface {
 	error() error
 }
 
-type GetJokeResponse struct {
-	Response string
-}
+type GetJokeResponse string
 
 func MakeGetJokeResponseEncoder(appCtx appcontext.Context) (kithttp.EncodeResponseFunc, error) {
 	return func(ctx context.Context, httpResponse http.ResponseWriter, endpointResponse interface{}) error {
-		response, err := json.Marshal(endpointResponse)
-		if err != nil {
-			log.Println(err.Error())
+		response, ok := endpointResponse.(GetJokeResponse)
+		if ! ok {
+			return errors.New("response was not a string")
 		}
-		_, err = httpResponse.Write(response)
+		_, err := httpResponse.Write([]byte(response))
 		return err
 	}, nil
 }

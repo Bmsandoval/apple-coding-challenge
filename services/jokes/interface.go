@@ -1,4 +1,4 @@
-package names
+package jokes
 
 import (
 	"github.com/bmsandoval/apple-coding-challenge/library/appcontext"
@@ -16,7 +16,7 @@ func(h Helpable) NewHelper(appCtx appcontext.Context) (interface{}, error) {
 }
 
 func (h Helpable) ServiceName() string {
-	return "NamesSvc"
+	return "JokesSvc"
 }
 
 type Service interface {

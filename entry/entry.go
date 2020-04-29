@@ -24,10 +24,9 @@ func Entry() {
 	http_routing.BundleAll(ctx, router, *serviceBundle)
 
 	svr := http.Server{
-		Addr: ":8080",
+		Addr: ":5000",
 		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			w.Header().Set("Access-Control-Allow-Origin", "*")
-			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+			w.Header().Set("Access-Control-Allow-Methods", "GET")
 			router.ServeHTTP(w, r)
 		}),
 	}
